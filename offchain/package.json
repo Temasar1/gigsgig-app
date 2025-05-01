@@ -1,0 +1,19 @@
+{
+  "name": "mesh-sdk",
+  "version": "1.0.0",
+  "description": "a new mesh offchain",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "temasar",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^22.15.3",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "@meshsdk/core": "^1.9.0-beta-39"
+  }
+}
