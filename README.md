@@ -43,29 +43,11 @@ Gigsgig App is a decentralized platform designed to connect individuals seeking 
 
 ## Usage
 
-1. Sign up as a worker or employer.
+1. connect wallet 
+2. sign up by minting either the user or worker access token
 2. Browse available gigs or post a new job.
-3. Use Cardano tokens for secure payments.
+3. Use ADA for secure payments.
 4. Complete the gig and leave feedback.
-
-## Contributing
-
-We welcome contributions! Please follow these steps:
-
-1. Fork the repository.
-2. Create a new branch:
-    ```bash
-    git checkout -b feature-name
-    ```
-3. Commit your changes:
-    ```bash
-    git commit -m "Add feature"
-    ```
-4. Push to your branch:
-    ```bash
-    git push origin feature-name
-    ```
-5. Open a pull request.
 
 ## License
 
