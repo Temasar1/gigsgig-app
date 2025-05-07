@@ -1,18 +1,28 @@
 import React from "react";
 
-export default function Hero() {
+export default function Header() {
   return (
-    <section className="text-center py-20 px-4 bg-gradient-to-r from-green-50 to-white">
-      <h1 className="text-4xl md:text-5xl font-bold mb-6">
-        Book trusted help for campus tasks
-      </h1>
-      <div className="max-w-xl mx-auto">
-        <input
-          type="text"
-          placeholder="What do you need help with?"
-          className="w-full px-6 py-3 border rounded-full shadow-sm"
-        />
+    <header className="bg-white shadow-sm fixed w-full z-50">
+      <div className="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+        {/* Logo */}
+        <div className="text-2xl font-bold text-green-600">
+          Campus<span className="text-black">Task</span>
+        </div>
+
+        {/* Navigation */}
+        <nav className="hidden md:flex items-center space-x-6 text-sm font-medium text-gray-800">
+          <a href="#" className="hover:text-green-600">Services</a>
+          <a href="#" className="hover:text-green-600">Sign up / Log in</a>
+          <a
+            href="#"
+            className="bg-green-600 hover:bg-green-700 text-white px-5 py-2 rounded-full text-sm font-medium transition"
+          >
+            Become a Tasker
+          </a>
+        </nav>
+
+        {/* Mobile Menu Placeholder (Optional if you're adding responsiveness) */}
       </div>
-    </section>
+    </header>
   );
 }
