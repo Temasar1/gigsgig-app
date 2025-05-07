@@ -1,40 +1,59 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
+# Gigsgig App
 
-## Getting Started
+Gigsgig App is a decentralized platform designed to connect individuals seeking menial work with those offering it. Built on the Cardano blockchain, the app leverages secure and transparent payment systems to ensure a seamless experience for all users. This project was developed as part of a hackathon to showcase the potential of blockchain technology.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Decentralized Payments**: Powered by the Cardano blockchain for secure and transparent transactions.
+- **User-Friendly Interface**: Simple and intuitive design for both job seekers and employers.
+- **Efficient Matching**: Quickly connects workers with available gigs in their area.
+- **Smart Contracts**: Ensures trust and reliability between parties.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Technology Stack
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+- **Frontend**: React.js
+- **Backend**: Node.js using Json server
+- **Blockchain**: Cardano (preprod)
+- **Smart Contracts/Onchain**: Aiken
+- **Offchain**: Mesh SDK
+- **Database**: JSON Server
 
-[API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+## Installation
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) instead of React pages.
+1. Clone the repository:
+    ```bash
+    git clone https://github.com/yourusername/gigsgig-app.git
+    ```
+2. Navigate to the project directory:
+    ```bash
+    cd gigsgig-app
+    ```
+3. Install dependencies:
+    ```bash
+    npm install
+    ```
+4. Start the development server:
+    ```bash
+    npm buid
+    ```
+5. run fron frontend 
+    ```bash
+    npm run dev
+    ```
 
-This project uses [`next/font`](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Usage
 
-## Learn More
+1. connect wallet 
+2. sign up by minting either the user or worker access token
+2. Browse available gigs or post a new job.
+3. Use ADA for secure payments.
+4. Complete the gig and leave feedback.
 
-To learn more about Next.js, take a look at the following resources:
+## License
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn-pages-router) - an interactive Next.js tutorial.
+This project is licensed under the [MIT License](LICENSE).
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Acknowledgments
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying) for more details.
+- Cardano community for their support and resources.
+- Hackathon organizers for the opportunity to build this project.
