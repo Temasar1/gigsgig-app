@@ -33,7 +33,7 @@ export default function PopularTasks() {
             <h3 className="font-semibold text-lg text-gray-800 mb-1">
               {task.name}
             </h3>
-            <p className="text-sm text-gray-500">Projects starting at ₦500</p>
+            <p className="text-sm text-gray-500">Projects starting at ₳500</p>
           </div>
         ))}
       </div>
