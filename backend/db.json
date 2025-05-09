@@ -1,17 +1,28 @@
 {
-    "user":[
+    "tasker":[
         {
-            "id"   : 1,
-            "category" : "Cleaning",
-            "amount": "100ADA",
-            "Description": ""
+          "id"   : 1,
+          "wallet": " ",
+          "usernane" : "Temasar",
+          "School" : "Univerisity of Lagos",
+          "interested" : "repair , Future assembly",
+          "task": "Repair ",
+          "duration": "2 hrs",
+          "description": "to repair my calculator, it hasn't been coming up",
+          "amount": "300 ADA",
+          "tasker-status": "open"
         }
       ],
     "worker":[
         {
-          "id": 1,
-          "category": "cleaner",
-          "completed": 0
-        }
+            "id"   : 1,
+            "wallet": " ",
+            "usernane" : "jethro",
+            "School" : "Univerisity of Lagos",
+            "interest" : "Cleaning , Future assembly",
+            "task": "Repair",
+            "worker-status": "close",
+            "description": "to repair my calculator, it hasn't been coming up"
+      }
     ]
 }
