@@ -1,11 +1,12 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import illustration from "../assets/Img/Herosection.png";
 
 const Hero: React.FC = () => {
+  const [ signup, useSigh] = useState();
   return (
     <section className="w-full relative bg-gradient-to-br from-green-100 to-white py-20 px-4">
       <div className="max-w-6xl mx-auto grid md:grid-cols-2 items-center gap-10">
-        {/* Left Side: Text */}
+        
         <div className="text-center md:text-left">
           <h1 className="text-4xl md:text-5xl font-extrabold text-gray-800 leading-tight mb-4">
             Book trusted help for <span className="text-green-600">CampusTask</span>
