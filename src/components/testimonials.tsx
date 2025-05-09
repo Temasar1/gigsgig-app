@@ -3,15 +3,15 @@ import React from "react";
 const testimonials = [
   {
     name: "Elizabeth",
-    quote: "Elizabeth helped me assemble a bookshelf quickly and was super polite. CampusTask made it really easy to connect!",
+    quote: "Elizabeth helped me assemble a bookshelf quickly and was super polite. GigsGigApp made it really easy to connect!",
   },
   {
     name: "Tomiwa",
-    quote: "Tomiwa assisted with my laundry and was extremely efficient. I’ll definitely use CampusTask again!",
+    quote: "Tomiwa assisted with my laundry and was extremely efficient. I’ll definitely use GigsGigApp again!",
   },
   {
     name: "Amanda",
-    quote: "Amanda cleaned my room and it looked spotless. Amazing experience using CampusTask!",
+    quote: "Amanda cleaned my room and it looked spotless. Amazing experience using GigsGigApp!",
   },
 ];
 
@@ -19,7 +19,7 @@ export default function Testimonials() {
   return (
     <section className="py-20 px-4 bg-white">
       <h2 className="text-3xl md:text-4xl font-bold text-center mb-14 text-gray-800 leading-snug">
-        See what students are saying<br />about <span className="text-green-600">CampusTask</span>
+        See what students are saying<br />about <span className="text-green-600">GigsGigApp</span>
       </h2>
 
       <div className="max-w-5xl mx-auto grid gap-8 md:grid-cols-3">
