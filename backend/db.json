@@ -1,0 +1,17 @@
+{
+    "user":[
+        {
+            "id"   : 1,
+            "category" : "Cleaning",
+            "amount": "100ADA",
+            "Description": ""
+        }
+      ],
+    "worker":[
+        {
+          "id": 1,
+          "category": "cleaner",
+          "completed": 0
+        }
+    ]
+}
