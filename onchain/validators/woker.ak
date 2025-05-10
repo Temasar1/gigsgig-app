@@ -1,79 +1,80 @@
-use cardano/assets.{PolicyId}
+use cardano/assets.{PolicyId, quantity_of, from_lovelace}
 use aiken/primitive/bytearray.{starts_with}
-use aiken/crypto.{ScriptHash}
+use aiken/collection/list
+use aiken/collection/dict
+use aiken/crypto.{VerificationKeyHash}
+use cardano/address.{Address, Script, VerificationKey}
 use cardano/transaction.{
   OutputReference, Transaction
 }
+use mocktail.{ 
+  mint, mocktail_tx, mock_utxo_ref, complete, tx_in,mock_tx_hash,mock_pub_key_address,mock_pub_key_hash
+  }
+use mocktail/virgin_key_hash.{mock_policy_id}
 
-pub type Worker_Redeemer {
-  AcceptWork
-}
 pub type WorkerSignup {
   MintWorker
   BurnWorker
 }
 pub type Worker_Datum {
-  workerPolicy: PolicyId
+  worker_policy: PolicyId
 }
 
 //validators parameters
 validator worker(
     worker_token_name: ByteArray,
     input_utxo: OutputReference,
-    worker_address: ScriptHash
+    worker_address: VerificationKeyHash
 ){
+  
    spend(
-    datum: Option<Worker_Datum>
-    redeemer: Worker_Redeemer
-    utxo: OutputReference,
+    datum: Option<Worker_Datum>,
+    _redeemer: Data,
+    _utxo: OutputReference,
     self: Transaction
    ){
-      let Transaction { inputs, outputs, ...} = self
-      expect Some(worker_input) = find_input(inputs, utxo)
+      let Transaction { inputs, ..} = self
       expect Some(datum) = datum
-      let WorkerDatum = { worker_policyid: PolicyId } = datum
+      let Worker_Datum{ worker_policy } = datum
 
-      when redeemer is {
-      AcceptWork -> {
-          //expect one worker token input is present in worker address
-          expect [worker_input] = 
-            list.filter(
-              inputs,
-                fn(input) {
-                  when input.output.address.payment_credential is {
-                    VerificationKey(addr_payment) -> 
-                    addr_payment == worker_address
-                    Script(_) -> False
-                  }
-                }
-            )
-          let must_include_one_worker_token = 
-            quantity_of(
-              worker_input.output.value,
-              worker_policyid,
-              worker_token_name
-            ) == 1
-        }
+      //expect one worker token input is present in worker address
+      expect [worker_input] = 
+        list.filter(
+          inputs,
+            fn(input) {
+              when input.output.address.payment_credential is {
+                VerificationKey(addr_payment) -> 
+                addr_payment == worker_address
+                Script(_) -> False
+              }
+            }
+        )
+      let must_include_one_worker_token = 
+        quantity_of(
+          worker_input.output.value,
+          worker_policy,
+          worker_token_name,
+        ) == 1
+      
+    must_include_one_worker_token?
       }
-   }
-   gigsworkernewman
+  
 
-    mint(redeemer: WorkerSignup , worker_policyid: PolicyId, self: Transaction){
-        let Transaction { inputs, mint, redeemers} = self
+  mint(redeemer: WorkerSignup , worker_policyid: PolicyId, self: Transaction){
+        let Transaction { inputs, mint, ..} = self
 
-    expect valid_token_name = starts_with(worker_token_name, "GigsWorker")
-    expect [pair(asset_name , amount)] = 
+    expect [Pair(asset_name , amount)] = 
         mint
-          |> tokens(policy_id)
+          |> assets.tokens(worker_policyid)
           |> dict.to_pairs()
     
     when redeemer is {
     MintWorker ->  {
-        expect true = 
-        list.any(inputs, fn(input) {
-            input.OutputReference == input_utxo
-        })
-    amount == 1 && asset_name == valid_token_name
+      expect True = 
+        list.any(inputs, fn(input) {input.output_reference == input_utxo})
+        
+    let valid_token_name = starts_with(asset_name, "GigsWorker")
+    amount == 1 && valid_token_name?
     }
    BurnWorker -> amount < 0
     }
@@ -81,4 +82,27 @@ validator worker(
   else(_){
     fail
   }
+}
+
+fn mock_token_name(){
+    "GigsWorkerEmmanuel"
+}
+fn mock_minting_tx() -> Transaction{
+    mocktail_tx()
+       |> tx_in(True,
+       mock_tx_hash(0), 
+       0 ,
+       from_lovelace(10_000_000),
+       mock_pub_key_address(0, None))
+       |> mint(True, 1 ,mock_policy_id(0), mock_token_name())
+       |> complete()
+ }
+
+test must_mint_correct_worker_tx(){
+    worker.mint(mock_token_name(), 
+    mock_utxo_ref(0,0),
+    mock_pub_key_hash(0),
+    MintWorker,
+    mock_policy_id(0),
+    mock_minting_tx())
 }
