@@ -6,13 +6,27 @@
           "usernane" : "Temasar",
           "School" : "Univerisity of Lagos",
           "interested" : "repair , Future assembly",
-          "task": "Repair ",
-          "duration": "2 hrs",
-          "description": "to repair my calculator, it hasn't been coming up",
-          "amount": "300 ADA",
-          "tasker-status": "open"
+          "tasks":[{
+                  "id": 1,
+                  "title": "Repair",
+                  "description": "to repair my calculator, it hasn't been coming up",
+                  "duration": "2 hrs",
+                  "amount": "300 ADA",
+                  "status": "open",
+                  "School" : "Univerisity of Lagos",
+                  "contact": "0812345678"
+          },{
+            "id": 2,
+                  "title": "Wash",
+                  "description": "To wash my clothes if anyone interested, been terribly lazy",
+                  "duration": "1 hrs",
+                  "amount": "500 ADA",
+                  "status": "open",
+                  "School" : "Univerisity of Lagos",
+                  "contact": "0812345678"
+          }]
         }
-      ],
+    ],
     "worker":[
         {
             "id"   : 1,
@@ -20,9 +34,8 @@
             "usernane" : "jethro",
             "School" : "Univerisity of Lagos",
             "interest" : "Cleaning , Future assembly",
-            "task": "Repair",
-            "worker-status": "close",
-            "description": "to repair my calculator, it hasn't been coming up"
+            "worker-status": "open",
+            "description": "I am open to available jobs"
       }
     ]
 }
