@@ -2,10 +2,10 @@
     "tasker":[
         {
           "id"   : 1,
-          "wallet": " ",
-          "usernane" : "Temasar",
+          "address": "addr_test1qr6784s76cawztg7t7en4f79wfrf474zdyhkr5k07sv7uzdg6ske4tqzye89y4g46ht4wh7gruqpcldl942r0ned3flsgl7q4t",
+          "username" : "Temasar",
           "School" : "Univerisity of Lagos",
-          "interested" : "repair , Future assembly",
+          "interest" : "repair , Future assembly",
           "tasks":[{
                   "id": 1,
                   "title": "Repair",
@@ -21,7 +21,7 @@
                   "description": "To wash my clothes if anyone interested, been terribly lazy",
                   "duration": "1 hrs",
                   "amount": "500 ADA",
-                  "status": "open",
+                  "status": "close",
                   "School" : "Univerisity of Lagos",
                   "contact": "0812345678"
           }]
@@ -30,12 +30,14 @@
     "worker":[
         {
             "id"   : 1,
-            "wallet": " ",
-            "usernane" : "jethro",
+            "address": "addr_test1qrva62tmq406czwdvennztql7n38fa6n66t205ucsrds4h6t53h5sf345n569735xszw47zpk5nxaxfzcpuema20fdnst77hln",
+            "username" : "jethro",
             "School" : "Univerisity of Lagos",
             "interest" : "Cleaning , Future assembly",
-            "worker-status": "open",
-            "description": "I am open to available jobs"
+            "work": {
+                    "worker-status": "open",
+                    "description": "I am open to available jobs"
+            }
       }
     ]
 }
