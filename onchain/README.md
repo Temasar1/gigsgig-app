@@ -1,65 +1,31 @@
-# bar
+# GigsGigApp Onchain Validation
 
-Write validators in the `validators` folder, and supporting functions in the `lib` folder using `.ak` as a file extension.
+The app has two main users 
+Tasker
+Worker
 
-```aiken
-validator my_first_validator {
-  spend(_datum: Option<Data>, _redeemer: Data, _output_reference: Data, _context: Data) {
-    True
-  }
-}
-```
 
-## Building
+## Tasker
+- A tasker has access to the platform by minting a NFT as access token specifying the Nftname as a 
+GigsTakser + the username
 
-```sh
-aiken build
-```
+## Worker
+- A worker has access to the platform by minting a NFT as access token specifying the Nftname as a 
+GigsWorker + the username
 
-## Configuring
 
-**aiken.toml**
-```toml
-[config.default]
-network_id = 41
-```
+# Create task
+A task utxo is created with the datum of time intervals of valid_from, valid_to, and check is is_workdone which is initially false.
 
-Or, alternatively, write conditional environment modules under `env`.
+with the utxo payment for job in ADA
 
-## Testing
+# pay worker
+For worker to spend from tasker vaidator there has to be some checks
+which is to check if the worker has some policyId minted in the personal address
 
-You can write tests in any module using the `test` keyword. For example:
+With the following output datum checks
+Time validity of the input datum is consistent when trying to spend
+is work done should be true which would be updated the user
 
-```aiken
-use config
-
-test foo() {
-  config.network_id + 1 == 42
-}
-```
-
-To run all tests, simply do:
-
-```sh
-aiken check
-```
-
-To run only tests matching the string `foo`, do:
-
-```sh
-aiken check -m foo
-```
-
-## Documentation
-
-If you're writing a library, you might want to generate an HTML documentation for it.
-
-Use:
-
-```sh
-aiken docs
-```
-
-## Resources
-
-Find more on the [Aiken's user manual](https://aiken-lang.org).
+##
+We believe there would be a lot of checks to this platform on the validation logic but the time frame of the hackathon was a limitation.

@@ -1,6 +1,5 @@
 # Gigsgig App
-
-Gigsgig App is a decentralized platform designed to connect individuals seeking menial work with those offering it. Built on the Cardano blockchain, the app leverages secure and transparent payment systems to ensure a seamless experience for all users. This project was developed as part of a hackathon to showcase the potential of blockchain technology.
+Gigsgig App is a decentralized platform tailored to meet the needs of students by connecting them with campus-based menial work opportunities. Built on the Cardano blockchain, the app ensures secure and transparent payment systems This project was developed as part of a hackathon to demonstrate the potential of blockchain technology in addressing everyday challenges faced by students.
 
 ## Features
 
@@ -32,6 +31,10 @@ Gigsgig App is a decentralized platform designed to connect individuals seeking 
     ```bash
     npm install
     ```
+4. Start Json-server
+    ```bash
+    npx json-server backend/db.json --port 8000
+    ```
 4. Start the development server:
     ```bash
     npm buid
@@ -44,7 +47,7 @@ Gigsgig App is a decentralized platform designed to connect individuals seeking 
 ## Usage
 
 1. connect wallet 
-2. sign up by minting either the user or worker access token
+2. navigate to either "I am a worker" or "I am a tasker"
 2. Browse available gigs or post a new job.
 3. Use ADA for secure payments.
 4. Complete the gig and leave feedback.
