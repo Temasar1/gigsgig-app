@@ -8,7 +8,7 @@ use cardano/transaction.{
   OutputReference, Transaction
 }
 use mocktail.{ 
-  mint, mocktail_tx, mock_utxo_ref, complete, tx_in,mock_tx_hash,mock_pub_key_address,mock_pub_key_hash
+  mint, mocktail_tx, mock_utxo_ref, complete, tx_in, tx_out, mock_tx_hash,mock_pub_key_address,mock_pub_key_hash
   }
 use mocktail/virgin_key_hash.{mock_policy_id}
 
@@ -16,7 +16,7 @@ pub type WorkerSignup {
   MintWorker
   BurnWorker
 }
-pub type Worker_Datum {
+pub type WorkerDatum {
   worker_policy: PolicyId
 }
 
@@ -28,14 +28,14 @@ validator worker(
 ){
   
    spend(
-    datum: Option<Worker_Datum>,
+    datum: Option<WorkerDatum>,
     _redeemer: Data,
     _utxo: OutputReference,
     self: Transaction
    ){
       let Transaction { inputs, ..} = self
       expect Some(datum) = datum
-      let Worker_Datum{ worker_policy } = datum
+      let WorkerDatum{ worker_policy } = datum
 
       //expect one worker token input is present in worker address
       expect [worker_input] = 
@@ -60,12 +60,12 @@ validator worker(
       }
   
 
-  mint(redeemer: WorkerSignup , worker_policyid: PolicyId, self: Transaction){
+  mint(redeemer: WorkerSignup , worker_policy: PolicyId, self: Transaction){
         let Transaction { inputs, mint, ..} = self
 
     expect [Pair(asset_name , amount)] = 
         mint
-          |> assets.tokens(worker_policyid)
+          |> assets.tokens(worker_policy)
           |> dict.to_pairs()
     
     when redeemer is {
@@ -87,6 +87,7 @@ validator worker(
 fn mock_token_name(){
     "GigsWorkerEmmanuel"
 }
+
 fn mock_minting_tx() -> Transaction{
     mocktail_tx()
        |> tx_in(True,
@@ -105,4 +106,32 @@ test must_mint_correct_worker_tx(){
     MintWorker,
     mock_policy_id(0),
     mock_minting_tx())
+}
+
+fn mock_spending_tx() -> Transaction{
+  mocktail_tx()
+    |> tx_in(
+      True,
+      mock_tx_hash(0),
+      0,
+      from_lovelace(10_000_000),
+      mock_pub_key_address(0, None)
+    )
+    |> tx_out(True, mock_pub_key_address(1, None), from_lovelace(9_000_000))
+    |> complete()
+}
+
+
+test must_have_policyid(){
+  let datum =  Some(WorkerDatum{ worker_policy: mock_policy_id(0) })
+  let redeemer = None
+  worker.spend(
+    mock_token_name(),
+    mock_utxo_ref(0,0),
+    mock_pub_key_hash(0),
+    datum,
+    redeemer,
+    mock_utxo_ref(0,0),
+    mock_spending_tx()
+  )
 }
