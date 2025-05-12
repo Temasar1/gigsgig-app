@@ -1,9 +1,26 @@
-import React from "react";
-import { CardanoWallet, useWallet } from "@meshsdk/react";
+import React, { useEffect, useState } from "react";
+import { CardanoWallet, useWallet, useAddress } from "@meshsdk/react";
+
 
 export default function Header() {
-const {wallet, connected } = useWallet();
 
+const { wallet,connected} = useWallet();
+
+const walletConnected = async() => {
+  if(connected){
+    
+  }
+ //console.log(await wallet.getChangeAddress())
+}
+// useEffect(() => {
+//   const isConnected = localStorage.getItem("walletConnected") === "true";
+//   setWallet(wallet,name!)
+// }, []);
+
+// const connectWallet = () => {
+//   setWallet(wallet,name!);
+//   localStorage.setItem("walletConnected", "true");
+// }
   return (
     <header className="bg-white shadow-sm fixed top-0 w-full z-50">
       <div className="max-w-6xl mx-auto px-4 py-6 flex items-center justify-between">
@@ -26,12 +43,10 @@ const {wallet, connected } = useWallet();
            I am a tasker
           </a>
           <CardanoWallet 
-           onConnected={() => console.log(wallet)}
+          persist
+           onConnected={walletConnected}
           />
-          {}
         </nav>
-
-        {/* Mobile Menu Placeholder (Optional if you're adding responsiveness) */}
       </div>
     </header>
   );
