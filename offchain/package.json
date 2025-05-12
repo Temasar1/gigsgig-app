@@ -3,8 +3,11 @@
   "version": "1.0.0",
   "description": "a new mesh offchain",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "tsc && node dist/index.js"
+
   },
   "author": "temasar",
   "license": "ISC",
